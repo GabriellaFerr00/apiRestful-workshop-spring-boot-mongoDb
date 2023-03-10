@@ -1,5 +1,6 @@
 package com.example.apiRestfulworkshopmongoDb.controllers;
 
+import com.example.apiRestfulworkshopmongoDb.domain.entities.Post;
 import com.example.apiRestfulworkshopmongoDb.domain.entities.User;
 import com.example.apiRestfulworkshopmongoDb.dto.UserDTO;
 import com.example.apiRestfulworkshopmongoDb.services.UserService;
@@ -9,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +67,13 @@ public class UserController {
         user = userService.update(user);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = userService.findById(id);
+
+        return ResponseEntity.ok().body(user.getPosts());
     }
 
 }
