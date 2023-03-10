@@ -30,12 +30,25 @@ public class UserService {
     }
     //esse metodo fere a responsabilidade unica, porem, dedpendendo da situacao para instanciar um user, posso querer acessar
     //o banco de dados e quem tem essa injecao de dependencia e o userService
-    public User fromDTO(UserDTO dto){
-        return new User(dto.getId(), dto.getName());
-    }
 
     public void delete(String id){
         this.findById(id);
         userRepository.deleteById(id);
     }
+
+    public User update(User user){
+        User user2 = this.findById(user.getId());
+        updateData(user2, user);
+
+        return userRepository.save(user2);
+    }
+
+    private void updateData(User user2, User user) {
+        user2.setName(user.getName());
+    }
+
+    public User fromDTO(UserDTO dto){
+        return new User(dto.getId(), dto.getName());
+    }
+
 }
