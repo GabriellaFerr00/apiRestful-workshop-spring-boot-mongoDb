@@ -1,13 +1,13 @@
 package com.example.apiRestfulworkshopmongoDb.controllers;
 
 import com.example.apiRestfulworkshopmongoDb.domain.entities.Post;
-import com.example.apiRestfulworkshopmongoDb.dto.UserDTO;
 import com.example.apiRestfulworkshopmongoDb.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/posts")
