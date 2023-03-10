@@ -1,5 +1,6 @@
 package com.example.apiRestfulworkshopmongoDb.controllers;
 
+import com.example.apiRestfulworkshopmongoDb.domain.entities.Post;
 import com.example.apiRestfulworkshopmongoDb.domain.entities.User;
 import com.example.apiRestfulworkshopmongoDb.dto.UserDTO;
 import com.example.apiRestfulworkshopmongoDb.services.UserService;
@@ -66,6 +67,13 @@ public class UserController {
         user = userService.update(user);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = userService.findById(id);
+
+        return ResponseEntity.ok().body(user.getPosts());
     }
 
 }
