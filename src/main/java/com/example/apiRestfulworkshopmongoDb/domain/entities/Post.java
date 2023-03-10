@@ -1,5 +1,6 @@
 package com.example.apiRestfulworkshopmongoDb.domain.entities;
 
+import com.example.apiRestfulworkshopmongoDb.dto.AuthorDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class Post {
         private Date date;
         private String title;
         private String body;
-        private User author;
+        private AuthorDTO author;
 
         @Override
         public boolean equals(Object o) {
